@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const mode = process.env.NODE_ENV || 'development';
 
@@ -13,9 +14,20 @@ module.exports = {
     },
     module: {
         rules: [
+            // {
+            //     test: /\.jsx?/,
+            //     exclude: /node_module/,
+            //     use: {
+            //         loader: 'babel-loader',
+            //         options: {
+            //             presets: ['@babel/preset-env', '@babel/preset-react'],
+            //             plugins: ['@babel/proposal-class-properties'],
+            //         },
+            //     },
+            // },
             {
                 test: /\.(ts|tsx)$/,
-                use: 'ts-loader',
+                use: ['ts-loader'],
                 exclude: /node_modules/,
             },
         ],
@@ -23,6 +35,10 @@ module.exports = {
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, 'dist'),
+    },
+    devServer: {
+        contentBase: path.join(__dirname, "./dist/"),
+        port: 8000
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -38,5 +54,6 @@ module.exports = {
                     }
                     : false,
         }),
+        new BundleAnalyzerPlugin()
     ],
 };

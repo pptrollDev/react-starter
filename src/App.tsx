@@ -1,5 +1,6 @@
 import React from 'react';
 
 export default function App() {
-    return <div>React + TypeScript + Webpack!</div>;
+    const alert = (msg: any) => window.alert(msg);
+    return <div onClick={alert}>React + TypeScript + Webpack!</div>;
 }
