@@ -2,5 +2,5 @@ import React from 'react';
 import './style.scss';
 
 export default function App() {
-  return <div>React Stater!</div>;
+  return <div>React Starter!</div>;
 }

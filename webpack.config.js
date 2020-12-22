@@ -2,10 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-const mode = process.env.NODE_ENV || 'development';
-
 module.exports = {
-    mode,
     entry: {
         app: path.join(__dirname, 'src', 'index.tsx'),
     },
