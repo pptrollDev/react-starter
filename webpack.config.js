@@ -8,6 +8,11 @@ module.exports = (env, options) =>{
         entry: {
             app: path.join(__dirname, 'src', 'index.tsx'),
         },
+        output: {
+            filename: "[name].[chunkhash].js",
+            chunkFilename: "[name].[chunkhash].js",
+            path: path.resolve(__dirname, "build")
+        },
         resolve: {
             extensions: ['.ts', '.tsx', '.js'],
         },
@@ -42,13 +47,10 @@ module.exports = (env, options) =>{
                 },
             ],
         },
-        output: {
-            filename: '[name].js',
-            path: path.resolve(__dirname, 'build'),
-        },
         devServer: {
             contentBase: path.join(__dirname, "./build/"),
-            port: 8000
+            port: 8000,
+            historyApiFallback: true
         },
         plugins: [
             new HtmlWebpackPlugin({

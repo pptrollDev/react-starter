@@ -1,0 +1,1 @@
+(self.webpackChunkreact_starter=self.webpackChunkreact_starter||[]).push([[372],{372:(e,t,r)=>{"use strict";r.r(t),r.d(t,{default:()=>u});var a=r(294);function u(){return a.createElement("div",null,"Home")}}}]);
