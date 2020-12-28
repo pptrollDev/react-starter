@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './style.scss';
 
 export default function App() {
-  const Home = lazy(() => import('./pages/Home'));
-  const About = lazy(() => import('./pages/About'));
+  const Home = lazy(() => import('./components/pages/Home'));
+  const About = lazy(() => import('./components/pages/About'));
 
   return (
     <Router>
