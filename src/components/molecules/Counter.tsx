@@ -17,7 +17,6 @@ function Counter({ count, onIncrease, onDecrease, onIncreaseBy }: CountProps) {
       <button type="button" onClick={onDecrease}>
         -1
       </button>
-
       <button type="button" onClick={() => onIncreaseBy(5)}>
         +5
       </button>
