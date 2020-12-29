@@ -1,10 +1,10 @@
-import {decrease, increase, increaseBy} from "./action";
+import { decrease, increase, increaseBy } from './action';
 
 export type CountAction =
-    | ReturnType<typeof increase>
-    | ReturnType<typeof decrease>
-    | ReturnType<typeof increaseBy>;
+  | ReturnType<typeof increase>
+  | ReturnType<typeof decrease>
+  | ReturnType<typeof increaseBy>;
 
 export type CountState = {
-    count: number;
-}
+  count: number;
+};
