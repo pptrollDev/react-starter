@@ -8,8 +8,8 @@
     "build:dev": "webpack --mode development",
     "start": "webpack-dev-server --mode development --open --hot",
     "prettier": "prettier --write --config ./.prettierrc \"**/*.{ts,tsx}\"",
-    "lint": "eslint './src/**/*.{ts,tsx}'",
-    "lint:fix": "eslint --fix './src/**/*.{ts,tsx}'"
+    "lint": "eslint './src/**/*.{ts,tsx,js}'",
+    "lint:fix": "eslint --fix './src/**/*.{ts,tsx,js}'"
   },
   "dependencies": {
     "react": "^17.0.1",
@@ -61,7 +61,8 @@
     }
   },
   "lint-staged": {
-    "./src/**/*.{ts,tsx}": [
+    "./src/**/*.{ts,tsx,js}": [
+      "prettier --write --config ./.prettierrc",
       "eslint --fix"
     ]
   }

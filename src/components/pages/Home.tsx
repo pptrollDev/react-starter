@@ -1,7 +1,7 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
 import Counter from '../molecules/Counter';
-import { useSelector, useDispatch } from 'react-redux';
 import { increase, decrease, increaseBy } from '../../store/count';
 
 function Home() {
