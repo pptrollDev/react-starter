@@ -1,11 +1,11 @@
 import React from 'react';
 import Counter from "../molecules/Counter";
 import { useSelector, useDispatch } from 'react-redux';
-import { increase, decrease, increaseBy } from '../../modules/counter';
-import { RootState } from '../../modules';
+import { increase, decrease, increaseBy } from '../../store/count';
+import { RootState } from '../../store';
 
 function Home() {
-    const count = useSelector((state: RootState) => state.counter.count);
+    const count = useSelector((state: RootState) => state.count.count);
     const dispatch = useDispatch();
 
     const onIncrease = () => {

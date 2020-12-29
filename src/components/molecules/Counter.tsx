@@ -1,6 +1,6 @@
 import React from 'react';
 
-type CounterProps = {
+type CountProps = {
     count: number;
     onIncrease: () => void;
     onDecrease: () => void;
@@ -12,7 +12,7 @@ function Counter({
                      onIncrease,
                      onDecrease,
                      onIncreaseBy
-                 }: CounterProps) {
+                 }: CountProps) {
     return (
         <div>
             <h1>{count}</h1>
