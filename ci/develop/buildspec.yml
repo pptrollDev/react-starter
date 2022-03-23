@@ -1,0 +1,20 @@
+version: 0.2
+env:
+  variables:
+    AWS_S3_BUCKET_NAME: ""
+    AWS_ACCESS_KEY_ID: ""
+    AWS_SECRET_ACCESS_KEY: ""
+    AWS_DEFAULT_REGION: ""
+    AWS_CDN_DISTRIBUTION_ID: ""
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+  build:
+    commands:
+      - yarn install
+      - yarn build:develop
+      - aws s3 sync ./out s3://$AWS_S3_BUCKET_NAME --acl public-read
+      - aws cloudfront create-invalidation --distribution-id $AWS_CDN_DISTRIBUTION_ID --paths "/*"
+

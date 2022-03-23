@@ -1,0 +1,91 @@
+def buildspec() {
+  if (env.BRANCH_NAME == "develop")
+    "ci/develop/buildspec.yml"
+  else if (env.BRANCH_NAME == "rc")
+    "ci/rc/buildspec.yml"
+  else if (env.BRANCH_NAME == "staging")
+    "ci/staging/buildspec.yml"
+  else if (env.BRANCH_NAME == "production")
+    "ci/production/buildspec.yml"
+  else
+    ""
+}
+
+def updateJiraTicket() {
+  branch = env.BRANCH_NAME
+  def publisher = LastChanges.getLastChangesPublisher "LAST_SUCCESSFUL_BUILD", "SIDE", "LINE", true, true, "", "", "", "", ""
+  publisher.publishLastChanges()
+  def changes = publisher.getLastChanges()
+  def ticketNumbers = changes.getCommits().inject("") { 
+      result, commit -> result + commit.getCommitInfo().getCommitMessage() + " " 
+    }.split(/\s/)
+    .findAll { it =~ /(gd|GD)\-\d+/ }
+    .collect { def matcher = it =~ /((gd|GD)\-\d+)/; matcher[0][0].toUpperCase() }
+    .unique().join(",")
+  
+  'cross-env BUILD_TARGET=' + branch + ''' update-jira-ticket ''' + ticketNumbers
+}
+
+
+pipeline {
+  agent none
+
+  stages {
+    stage('Notify starting job') {
+      agent {
+        label 'linux'
+      }
+      steps {
+        slackSend(
+          channel: "#product_development",
+          color: "#EEEEEE",
+          message: "[Starting] ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.RUN_DISPLAY_URL}|Open>)"
+        )
+      }
+    }
+
+    stage('Build') {
+      agent {
+        label 'linux'
+      }
+      steps {
+        awsCodeBuild(
+          credentialsType: 'keys',
+          projectName: 'common-build',
+          region: 'ap-northeast-2',
+          sourceControlType: 'jenkins',
+          sseAlgorithm: 'AES256',
+          buildSpecFile: "ci/${env.BRANCH_NAME}/buildspec.yml"
+        )
+      }
+    }
+
+    stage('Update Jira Ticket') {
+      agent {
+        label 'linux'
+      }
+      steps {
+        nodejs(nodeJSInstallationName: '14.17') {
+          sh(updateJiraTicket())
+        }
+      }
+    }
+  }
+
+  post {
+    success {
+      slackSend(
+        channel: "#product_development",
+        color: "good",
+        message: "[Successful] ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.RUN_DISPLAY_URL}|Open>)"
+      )
+    }
+    failure {
+      slackSend(
+        channel: "#product_development",
+        color: "danger",
+        message: "[Failed] ${env.JOB_NAME} #${env.BUILD_NUMBER} @channel (<${env.RUN_DISPLAY_URL}|Open>)"
+      )
+    }
+  }
+}

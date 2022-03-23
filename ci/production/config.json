@@ -1,0 +1,19 @@
+{
+	
+	"minimumVersion": "1.0.0",
+	"recommandVersion": "1.0.0",
+	"forceUpdateVersions": [],
+
+	
+	"logLevel": "info", 
+    "loggingWhiteList": [],
+	
+    "debuggerWhiteList": [],
+
+	
+	"notice": {
+		"open": false,
+		"noticeTitle": null,
+		"noticeContentUrl": null
+	}
+}

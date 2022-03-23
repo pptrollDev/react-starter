@@ -1,0 +1,12 @@
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M3.6665 3.33325C3.11422 3.33325 2.6665 3.78097 2.6665 4.33325V15.3333H6.05674C6.01989 15.229 5.99984 15.1168 5.99984 14.9999V13.6666C5.99984 13.1143 6.44755 12.6666 6.99984 12.6666H8.99984C9.55212 12.6666 9.99984 13.1143 9.99984 13.6666V14.9999C9.99984 15.1168 9.97979 15.229 9.94294 15.3333H13.3332V4.33325C13.3332 3.78097 12.8855 3.33325 12.3332 3.33325H3.6665Z" fill="#828896"/>
+<rect x="5.33301" y="1.33325" width="5.33333" height="6" rx="1" fill="#828896"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M8.44455 3V5.66667H7.55566V3H8.44455Z" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M9.33301 4.77781L6.66634 4.77781L6.66634 3.88892L9.33301 3.88892L9.33301 4.77781Z" fill="white"/>
+<rect x="4.6665" y="7.33325" width="1.33333" height="1.33333" rx="0.5" fill="white"/>
+<rect x="4.6665" y="9.33325" width="1.33333" height="1.33333" rx="0.5" fill="white"/>
+<rect x="7.33301" y="7.33325" width="1.33333" height="1.33333" rx="0.5" fill="white"/>
+<rect x="7.33301" y="9.33325" width="1.33333" height="1.33333" rx="0.5" fill="white"/>
+<rect x="10" y="7.33325" width="1.33333" height="1.33333" rx="0.5" fill="white"/>
+<rect x="10" y="9.33325" width="1.33333" height="1.33333" rx="0.5" fill="white"/>
+</svg>

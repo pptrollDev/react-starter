@@ -1,0 +1,23 @@
+{
+	"versionControl": {
+		"minimumVersion": "1.0.0",
+		"recommandVersion": "1.0.0",
+		"forceUpdateVersions": []
+	},
+
+	"logger": {
+		"logLevel": "info", 
+		"loggingWhiteList": []	
+	},
+	
+	
+	"debugger": {
+		"debuggerWhiteList": []
+	},
+	
+	"notice": {
+		"open": false,
+		"noticeTitle": null,
+		"noticeContentUrl": null
+	}
+}

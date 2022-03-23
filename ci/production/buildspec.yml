@@ -1,0 +1,14 @@
+version: 0.2
+env:
+  variables:
+    AWS_S3_BUCKET_NAME: ""
+    AWS_DEFAULT_REGION: ""
+    AWS_CDN_DISTRIBUTION_ID: ""
+    
+phases:
+  build:
+    commands:
+      - yarn install
+      - yarn build:production
+      - aws s3 sync ./out s3://$AWS_S3_BUCKET_NAME --acl public-read
+      - aws cloudfront create-invalidation --distribution-id $AWS_CDN_DISTRIBUTION_ID --paths "/*"
