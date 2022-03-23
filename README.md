@@ -6,7 +6,7 @@
 - apollo-client
 
 ## Maintainer
-- Chan Park (chan.park@goodoc.co.kr)
+- Chan Park
 
 ## Run
 ```shell
